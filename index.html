@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ISBI Challenge — <Your Challenge Title></title>
+  <style>
+    :root{--bg:#ffffff;--fg:#1f2937;--muted:#6b7280;--brand:#2563eb;--soft:#f3f4f6}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+    .container{max-width:900px;margin:0 auto;padding:20px}
+    header{position:sticky;top:0;background:#fffefef0;backdrop-filter:saturate(150%) blur(6px);border-bottom:1px solid #e5e7eb}
+    h1{font-size:clamp(26px,3.8vw,40px);margin:0 0 10px} h2{margin:28px 0 10px}
+    .hero{padding:32px 0 10px} p{line-height:1.6}
+    .btn{display:inline-block;padding:10px 14px;border:1px solid var(--brand);color:var(--brand);text-decoration:none;border-radius:10px}
+    .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .card{background:var(--soft);padding:16px;border-radius:12px}
+    ul{margin:8px 0 16px 20px}
+    footer{margin-top:40px;padding:20px 0;border-top:1px solid #e5e7eb;color:var(--muted);font-size:14px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media (min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <div style="font-weight:600">ISBI Challenge · <span style="color:var(--brand)">&lt;Your Challenge Title&gt;</span></div>
+      <nav style="display:flex;gap:14px;font-size:14px">
+        <a href="#about">About</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#organizers">Organizers</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>ISBI — &lt;Your Challenge Title&gt;</h1>
+      <p class="muted">Data access, submissions, and ranking are hosted on <b>Kaggle</b>. Please register on Kaggle and follow the submission instructions.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 8px">
+        <a class="btn primary" href="https://kaggle.com/competitions/&lt;your-kaggle-slug&gt;" target="_blank">Join on Kaggle</a>
+        <a class="btn" href="https://kaggle.com/competitions/&lt;your-kaggle-slug&gt;/leaderboard" target="_blank">Leaderboard</a>
+        <a class="btn" href="https://kaggle.com/competitions/&lt;your-kaggle-slug&gt;/discussion" target="_blank">Discussion</a>
+      </div>
+      <p class="muted" style="font-size:13px">（注：本页只提供简介与评测说明；报名与提交请前往 Kaggle。）</p>
+    </section>
+
+    <section id="about" class="card">
+      <h2>About / 简介</h2>
+      <p>在这里写 2–4 句对任务的简要介绍（示例：本挑战旨在评测 <b>白细胞多类别分类</b> 在真实类不平衡与域移位条件下的鲁棒性表现。参赛者需对 <b>13</b> 个类别进行单细胞级分类，数据与提交通道由 Kaggle 提供）。</p>
+      <ul>
+        <li><b>Data:</b> &lt;images count&gt; images, &lt;patient count&gt; patients (e.g., 368×368 JPG single-cell crops)</li>
+        <li><b>Task:</b> Multi-class classification (e.g., 13 classes)</li>
+        <li><b>Access:</b> via Kaggle links above</li>
+      </ul>
+    </section>
+
+    <section id="evaluation">
+      <h2>Evaluation / 评测与排名</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 style="margin-top:0">Primary Metric</h3>
+          <p><b>Macro‑F1</b> 作为官方排名指标（在隐藏测试集上计算）。</p>
+          <p class="muted" style="font-size:14px">可同时展示：Per‑class F1、Overall accuracy、Macro‑Precision、Macro‑Recall（仅用于报告，不计入最终排名，除非另有说明）。</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Submission Schema</h3>
+          <p>以 Kaggle 比赛页面要求为准（常见两种）：</p>
+          <ul>
+            <li>分类：CSV — <code>image_id,class</code></li>
+            <li>概率：CSV — <code>image_id,prob_CLASS1,...</code></li>
+          </ul>
+          <p class="muted" style="font-size:14px">最终格式请以 Kaggle <i>Data</i>/<i>Submission</i> 页为准。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="organizers">
+      <h2>Organizers / 组织者</h2>
+      <ul>
+        <li>Name Surname — Affiliation</li>
+        <li>Name Surname — Affiliation</li>
+        <li>Name Surname — Affiliation</li>
+      </ul>
+      <p>Contact: <a href="mailto:challenge@yourlab.org">challenge@yourlab.org</a>（公共问答建议使用 Kaggle Discussion）。</p>
+    </section>
+
+    <footer>
+      <div class="container">© ISBI Challenge — &lt;Your Challenge Title&gt;</div>
+    </footer>
+  </main>
+</body>
+</html>
