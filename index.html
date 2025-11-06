@@ -1,93 +1,416 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ISBI Challenge — <Your Challenge Title></title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WBCBench 2026: Robust White Blood Cell Classification</title>
+  <meta name="description" content="WBCBench 2026 — a robust benchmark for white blood cell classification under class imbalance and domain shift. Hosted as a private Kaggle competition." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#ffffff;--fg:#1f2937;--muted:#6b7280;--brand:#2563eb;--soft:#f3f4f6}
-    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg)}
-    .container{max-width:900px;margin:0 auto;padding:20px}
-    header{position:sticky;top:0;background:#fffefef0;backdrop-filter:saturate(150%) blur(6px);border-bottom:1px solid #e5e7eb}
-    h1{font-size:clamp(26px,3.8vw,40px);margin:0 0 10px} h2{margin:28px 0 10px}
-    .hero{padding:32px 0 10px} p{line-height:1.6}
-    .btn{display:inline-block;padding:10px 14px;border:1px solid var(--brand);color:var(--brand);text-decoration:none;border-radius:10px}
-    .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
-    .card{background:var(--soft);padding:16px;border-radius:12px}
-    ul{margin:8px 0 16px 20px}
-    footer{margin-top:40px;padding:20px 0;border-top:1px solid #e5e7eb;color:var(--muted);font-size:14px}
-    .muted{color:var(--muted)}
+    :root{
+      --bg:#0b1020;
+      --card:#11172b;
+      --muted:#93a4c0;
+      --text:#e6ecff;
+      --brand:#5eead4;
+      --brand-2:#60a5fa;
+      --accent:#fbbf24;
+      --chip:#1b2440;
+      --logo-band:#0a182f;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#091226 0%,#0b1020 30%,#0b1020 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+    a{color:var(--brand-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    /* Nav */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(9,18,38,.85);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    .nav-links{display:flex;flex-wrap:wrap;gap:12px}
+    .nav-links a{padding:6px 10px;border-radius:10px;background:transparent;border:1px solid transparent}
+    .nav-links a:hover{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;font-weight:600;letter-spacing:.2px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#05101e;border:none}
+    .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.14)}
+    /* Hero */
+    .hero{padding:64px 0 36px;border-bottom:1px solid rgba(255,255,255,.08);background:
+      radial-gradient(600px 300px at 10% 0%,rgba(96,165,250,.18),transparent 60%),
+      radial-gradient(800px 400px at 90% -10%,rgba(94,234,212,.12),transparent 60%)}
+    .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:0 0 10px}
+    .hero p{color:var(--muted);max-width:800px;margin:0 0 18px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 24px}
+    .chip{padding:6px 10px;border-radius:999px;background:var(--chip);border:1px solid rgba(255,255,255,.08);font-size:13px;color:#cfe2ff}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    /* Sections */
+    section{padding:40px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    section h2{font-size:clamp(22px,4vw,28px);margin:0 0 10px}
+    section p, section li{color:#cbd7f4}
     .grid{display:grid;grid-template-columns:1fr;gap:18px}
-    @media (min-width:800px){.grid{grid-template-columns:1fr 1fr}}
-  </style>
+    @media (min-width: 900px){
+      .grid-2{grid-template-columns:1.2fr .8fr}
+      .grid-3{grid-template-columns:repeat(3,1fr)}
+    }
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px}
+    .muted{color:var(--muted)}
+    .kbd{display:inline-block;border:1px solid rgba(255,255,255,.18);border-bottom-width:2px;padding:2px 6px;border-radius:6px;background:#0f1731;font-size:12px}
+    ul{margin:10px 0 0 18px}
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+    @media (min-width:650px){ .gallery{grid-template-columns:repeat(4,1fr)} }
+    @media (min-width:980px){ .gallery{grid-template-columns:repeat(6,1fr)} }
+    .tile{background:#0f1731;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px}
+    .tile .img-wrap{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;border-radius:8px;background:#0b1329}
+    .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .tile .cap{font-size:12px;color:#bcd1fb;text-align:center}
+    /* Logo band */
+    .logos{background:var(--logo-band);padding:28px 0 46px;margin-top:12px;border-top:2px solid rgba(255,255,255,.06)}
+    .logos h3{margin:0 0 14px}
+    .logo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:center}
+    @media (min-width:700px){ .logo-grid{grid-template-columns:repeat(6,1fr)} }
+    .logo-item{height:64px;border-radius:14px;border:1px dashed rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.03);padding:10px}
+    .logo-item img{max-width:100%;max-height:44px;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(0,0,0,.3))}
+    footer{color:#9cb2da;font-size:14px;padding:20px 0 40px}
+    .mono{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+    .small{font-size:13px}
+  
+/* === Logo section: smooth blue-gray gradient, no dashed border, no shadow === */
+.logos {
+  background: linear-gradient(180deg, #0b1020 0%, #1e293b 50%, #e5e9f0 100%) !important;
+  border-top: 1px solid rgba(255,255,255,.08) !important;
+  padding: 28px 0 46px !important;
+  margin-top: 12px !important;
+}
+.logo-item {
+  height: 64px !important;
+  border-radius: 14px !important;
+  border: none !important;
+  background: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px !important;
+}
+.logo-item img {
+  max-width: 100% !important;
+  max-height: 44px !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+
+</style>
 </head>
 <body>
-  <header>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <div style="font-weight:600">ISBI Challenge · <span style="color:var(--brand)">&lt;Your Challenge Title&gt;</span></div>
-      <nav style="display:flex;gap:14px;font-size:14px">
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>WBCBench 2026</span>
+      </div>
+      <div class="nav-links small">
         <a href="#about">About</a>
+        <a href="#goals">Goals</a>
+        <a href="#eligibility">Eligibility</a>
+        <a href="#registration">Registration</a>
+        <a href="#dataset">Dataset</a>
         <a href="#evaluation">Evaluation</a>
+        <a href="#awards">Awards</a>
         <a href="#organizers">Organizers</a>
-      </nav>
+        <a href="#contact">Contact</a>
+      </div>
+</div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>WBCBench 2026: Robust White Blood Cell Classification</h1>
+      <p class="muted">
+        A benchmark challenge for automated white blood cell (WBC) classification under severe class imbalance,
+        fine-grained morphology, and simulated domain shift. Hosted as a private Kaggle competition with
+        standardized evaluation for fair, reproducible comparison.
+      </p>
+      <div class="chips">
+        <span class="chip">Private Kaggle Competition</span>
+        <span class="chip">Macro-F1 Primary Metric</span>
+        <span class="chip">Patient-level Separation</span>
+        <span class="chip">Open Evaluator</span>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSein-E0ehxaCR7URd0rlL0zJiUbGzA_KZTssubRUjU0Sw7lnA/viewform?usp=dialog" target="_blank" rel="noopener">Register on Google Form</a>
+        <a class="btn secondary" href="#" onclick="alert('Kaggle link will be added upon launch.'); return false;">Kaggle (coming soon)</a>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <h1>ISBI — &lt;Your Challenge Title&gt;</h1>
-      <p class="muted">Data access, submissions, and ranking are hosted on <b>Kaggle</b>. Please register on Kaggle and follow the submission instructions.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 8px">
-        <a class="btn primary" href="https://kaggle.com/competitions/&lt;your-kaggle-slug&gt;" target="_blank">Join on Kaggle</a>
-        <a class="btn" href="https://kaggle.com/competitions/&lt;your-kaggle-slug&gt;/leaderboard" target="_blank">Leaderboard</a>
-        <a class="btn" href="https://kaggle.com/competitions/&lt;your-kaggle-slug&gt;/discussion" target="_blank">Discussion</a>
-      </div>
-      <p class="muted" style="font-size:13px">（注：本页只提供简介与评测说明；报名与提交请前往 Kaggle。）</p>
-    </section>
-
-    <section id="about" class="card">
-      <h2>About / 简介</h2>
-      <p>在这里写 2–4 句对任务的简要介绍（示例：本挑战旨在评测 <b>白细胞多类别分类</b> 在真实类不平衡与域移位条件下的鲁棒性表现。参赛者需对 <b>13</b> 个类别进行单细胞级分类，数据与提交通道由 Kaggle 提供）。</p>
-      <ul>
-        <li><b>Data:</b> &lt;images count&gt; images, &lt;patient count&gt; patients (e.g., 368×368 JPG single-cell crops)</li>
-        <li><b>Task:</b> Multi-class classification (e.g., 13 classes)</li>
-        <li><b>Access:</b> via Kaggle links above</li>
-      </ul>
-    </section>
-
-    <section id="evaluation">
-      <h2>Evaluation / 评测与排名</h2>
-      <div class="grid">
+  <main>
+    <!-- About -->
+    <section id="about">
+      <div class="container grid grid-2">
         <div class="card">
-          <h3 style="margin-top:0">Primary Metric</h3>
-          <p><b>Macro‑F1</b> 作为官方排名指标（在隐藏测试集上计算）。</p>
-          <p class="muted" style="font-size:14px">可同时展示：Per‑class F1、Overall accuracy、Macro‑Precision、Macro‑Recall（仅用于报告，不计入最终排名，除非另有说明）。</p>
+          <h2>Introduction</h2>
+          <p>
+            Leukaemia is a group of cancers that originate in the bone marrow and lead to an overproduction of abnormal white
+            blood cells. Diagnosis often relies on microscopic examination (with flow cytometry or genetic testing for confirmation),
+            which can be resource-intensive and time-consuming. Automating WBC classification offers a promising alternative, especially
+            for under-resourced laboratories, yet robust detection of blast and rare cells in blood smear images requires further
+            validation and optimization.
+          </p>
+          <p class="muted small">
+            This challenge evaluates algorithms on single-site images with standardized staining and acquisition.
+            To replicate real-world domain shift, we synthesize scanner and settings variability (e.g., noise and blur).
+            The held-out test set enforces patient-level separation; train/validation use group-stratified splits to preserve
+            minority coverage.
+          </p>
         </div>
         <div class="card">
-          <h3 style="margin-top:0">Submission Schema</h3>
-          <p>以 Kaggle 比赛页面要求为准（常见两种）：</p>
+          <h2>Key Facts</h2>
           <ul>
-            <li>分类：CSV — <code>image_id,class</code></li>
-            <li>概率：CSV — <code>image_id,prob_CLASS1,...</code></li>
+            <li>13 WBC classes; expert hematopathologist annotations</li>
+            <li>Severe class imbalance &amp; fine-grained morphology</li>
+            <li>Standardized submission schema &amp; open evaluator</li>
+            <li>Main metric: macro-averaged F1</li>
           </ul>
-          <p class="muted" style="font-size:14px">最终格式请以 Kaggle <i>Data</i>/<i>Submission</i> 页为准。</p>
         </div>
       </div>
     </section>
 
+    <!-- Goals -->
+    <section id="goals">
+      <div class="container">
+        <h2>Goals &amp; Objectives</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>G1 — Comparability &amp; Reproducibility</h3>
+            <p>Standardized splits and an open evaluator with a fixed submission format.</p>
+          </div>
+          <div class="card">
+            <h3>G2 — Rare-Class Reliability</h3>
+            <p>Prioritize macro-F1 and require class-wise reporting to highlight minority performance.</p>
+          </div>
+          <div class="card">
+            <h3>G3 — Practical Impact</h3>
+            <p>Provide baselines and a clear submission workflow; publish a concise post-challenge summary and recommended practices.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eligibility -->
+    <section id="eligibility">
+      <div class="container">
+        <h2>Team Eligibility</h2>
+        <div class="card">
+          <ul>
+            <li>Open to academia, industry, and independent teams (subject to local laws/sanctions).</li>
+            <li>One registered team per method entry; overlapping membership must be declared.</li>
+            <li>Organizers' institutes may participate and appear on the leaderboard, but are ineligible for prizes.</li>
+            <li>External public data/pretrained models allowed with disclosure; private/undisclosed data disallowed.</li>
+            <li>Ethical use only: no attempts to re-identify subjects or circumvent de-identification.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration -->
+    <section id="registration">
+      <div class="container">
+        <h2>Registration &amp; Access</h2>
+        <div class="card">
+          <p>Participation is <strong>by registration and approval</strong>. As a private Kaggle competition, access to the dataset and leaderboard submissions will be granted after you register below and your information is approved by the organizers.</p>
+          <ul>
+            <li>Please ensure you have a valid <a href="https://www.kaggle.com" target="_blank" rel="noopener">Kaggle account</a>.</li>
+            <li>Provide your <strong>Kaggle username</strong> and <strong>institutional/primary email</strong> in the registration form.</li>
+          </ul>
+          <p>
+            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSein-E0ehxaCR7URd0rlL0zJiUbGzA_KZTssubRUjU0Sw7lnA/viewform?usp=dialog" target="_blank" rel="noopener">Open Registration Form</a>
+            <a class="btn secondary" href="#" onclick="alert('Kaggle link will be added upon launch.'); return false;">Kaggle (coming soon)</a>
+            <!-- <span class="kbd mono">Opens in new tab</span> -->
+          </p>
+          <p class="small muted">Once approved, you will receive an email invitation and be able to join the private competition on Kaggle. The Kaggle link will be added here upon launch.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Dataset -->
+    <section id="dataset">
+      <div class="container">
+        <h2>Dataset</h2>
+        <div class="card">
+          <p>
+            The dataset comprises <strong>10,283 peripheral blood smear images</strong> across <strong>13 WBC classes</strong>. Images are provided as <strong>368×368 px JPEG</strong> files and were annotated by expert hematopathologists. The dataset is <strong>highly imbalanced</strong>, reflecting real-world prevalence: common classes (e.g., segmented neutrophils) dominate, while rare leukocytes appear only a few times.
+          </p>
+          <p>
+            The dataset will be made available via a dedicated <strong>Kaggle link</strong> at launch (training/validation downloadable; test set hidden for fair evaluation). Licensing will follow an appropriate open research license (e.g., <span class="mono">CC BY-NC-SA 4.0</span>) to encourage non‑commercial research and reproducibility.
+          </p>
+          <p class="small muted">Figure 1 shows representative examples of the 13 WBC categories.</p>
+
+          <!-- Figure 1: Representative examples -->
+          <figure class="card" style="margin-top:12px;">
+      <div style="position:relative;width:100%;max-width:980px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.08);background:#fff">
+        <img src="assets/figs/fig1_examples.png" alt="Figure 1: Example images of the 13 white blood cell classes" style="display:block;width:100%;height:auto;object-fit:contain;">
+      </div>
+      <figcaption class="small" style="margin-top:10px;line-height:1.6;">
+        <strong>Figure 1.</strong> Example images of the 13 white blood cell classes.
+        (A) Segmented Neutrophil, (B) Lymphocyte, (C) Monocyte, (D) Blast cell, (E) Eosinophil,
+        (F) Band form neutrophil, (G) Myelocyte, (H) Metamyelocyte, (I) Variant lymphocyte,
+        (J) Basophil, (K) Promyelocyte, (L) Plasma cell, (M) Prolymphocyte.
+      </figcaption>
+    </figure></div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+          </div>
+          <!-- <p class="small muted">Place the example images in <span class="mono">assets/figs/</span> using the exact filenames above.</p> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Evaluation -->
+    <section id="evaluation">
+      <div class="container">
+        <h2>Evaluation</h2>
+        <div class="card">
+          <ul>
+            <li><strong>Primary metric:</strong> macro‑averaged F1 across all classes.</li>
+            <li>If tied, use <strong>balanced accuracy</strong>; if still tied, use <strong>macro‑averaged precision</strong>.</li>
+            <li>If all above tie, final ranking will be determined by <strong>inference time</strong> (verified by organizers).</li>
+            <li>Top 5 teams will be asked to submit executable code and trained models for verification.</li>
+          </ul>
+          <p class="small muted">A fixed submission schema and open evaluator are provided to ensure fair, reproducible benchmarking.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards -->
+    <section id="awards">
+      <div class="container">
+        <h2>Awards &amp; Prizes</h2>
+        <div class="card">
+          <ul>
+            <li>1st: <strong>$800</strong> &nbsp; 2nd: <strong>$500</strong> &nbsp; 3rd: <strong>$250</strong></li>
+            <li>Top five teams invited to present at <strong>ISBI 2026</strong>; winners announced at the venue.</li>
+          </ul>
+          <h3 class="small">Prize Eligibility</h3>
+          <ul>
+            <li>Submit executable code and trained models for verification.</li>
+            <li>Submit a quality paper describing methods and training strategy.</li>
+            <li>At least one team member presents in person at ISBI.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+        <!-- Important Dates -->
+    <section id="important-dates">
+      <div class="container">
+        <h2>Important Dates</h2>
+        <div class="card">
+          <ul>
+            <li>
+              <strong>December 12 — Paper Submission Deadline (EDAS, Challenge Track)</strong><br>
+              Submit your challenge paper on the EDAS platform. The review period remains open for <em>two weeks</em>, while method evaluations continue in parallel during this time (i.e. challenge is still running).
+            </li>
+            <li style="margin-top:10px;">
+              <strong>December 26 — Reviews Released on EDAS</strong><br>
+              Authors receive reviews and have <em>one week</em> to address comments and make minor updates to the manuscript/method description.
+            </li>
+            <li style="margin-top:10px;">
+              <strong>January 17 — Camera‑ready Deadline</strong><br>
+              Upload the final paper on EDAS. Ensure your method artifacts (e.g., code/models) are prepared for possible verification. Organizers finalize the ranking.
+            </li>
+            <li style="margin-top:10px;">
+              <strong>January 30 — Presentation Format Notification</strong><br>
+              Authors are informed whether their presentation is oral or poster.
+            </li>
+            <li style="margin-top:10px;">
+              <strong>April 8–11 — Winners Announced</strong><br>
+              Final results and award announcements during ISBI 2026.
+            </li>
+          </ul>
+          <p class="small muted" style="margin-top:12px;">
+            Final dates follow the official ISBI 2026 schedule. Please refer to the ISBI Challenge page for any updates:
+            <a href="https://biomedicalimaging.org/2026/challenges/" target="_blank" rel="noopener">https://biomedicalimaging.org/2026/challenges/</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Organizers -->
     <section id="organizers">
-      <h2>Organizers / 组织者</h2>
-      <ul>
-        <li>Name Surname — Affiliation</li>
-        <li>Name Surname — Affiliation</li>
-        <li>Name Surname — Affiliation</li>
-      </ul>
-      <p>Contact: <a href="mailto:challenge@yourlab.org">challenge@yourlab.org</a>（公共问答建议使用 Kaggle Discussion）。</p>
+      <div class="container">
+        <h2>Organizers</h2>
+        <div class="card grid">
+          <ul>
+            <li>Nantheera Anantrasirichai, University of Bristol, UK</li>
+            <li>Alin Achim, University of Bristol, UK</li>
+            <li>Xudong Ma, University of Oxford, UK</li>
+            <li>Xin Tian, University of Oxford, UK</li>
+            <li>Tianqi Yang, University College London, UK</li>
+            <li>Phandee Watanaboonyongcharoen, Chulalongkorn University, Thailand</li>
+          </ul>
+          <p class="small muted">
+            Annotation team (Laboratory Medicine, Chulalongkorn University): Phandee Watanaboonyongcharoen (Lead),
+            Kwanlada Chaiwong, Manissara Yeekaday, Rujira Naksith, Suppakorn Wongkamchai, Jirapa Kaewkhruawan,
+            Luksamon Tipsuriya, Wararat Masalae, Waroonkarn Laiklang, Pitchayaporn Riyagoon, Sunudda Nowaratsopon,
+            Tapakorn Thepnarin, Winyanan Nunphuak.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="card">
+          <ul>
+            <li>Nantheera Anantrasirichai — <a href="mailto:N.Anantrasirichai@bristol.ac.uk">N.Anantrasirichai@bristol.ac.uk</a> — University of Bristol</li>
+            <li>Alin Achim — <a href="mailto:Alin.Achim@bristol.ac.uk">Alin.Achim@bristol.ac.uk</a> — University of Bristol</li>
+            <li>Xudong Ma — <a href="mailto:xudong.ma@ndph.ox.ac.uk">xudong.ma@ndph.ox.ac.uk</a> — University of Oxford</li>
+            <li>Xin Tian — <a href="mailto:xin.tian@well.ox.ac.uk">xin.tian@well.ox.ac.uk</a> — University of Oxford</li>
+            <li>Tianqi Yang — <a href="mailto:tianqi.yang@ucl.ac.uk">tianqi.yang@ucl.ac.uk</a> — University College London</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logo band -->
+    <section class="logos" aria-label="Organizers & Sponsors Logos">
+      <div class="container">
+        <h3>Organizers &amp; Partners</h3>
+        <!-- <p class="small muted">Place your institute and sponsor logos below (PNG/SVG recommended). Replace the placeholders with real image files named as specified.</p> -->
+        <div class="logo-grid">
+          <div class="logo-item"><img src="assets/logos/bristol.png" alt="University of Bristol logo"></div>
+          <div class="logo-item"><img src="assets/logos/oxford.png" alt="University of Oxford logo"></div>
+          <div class="logo-item"><img src="assets/logos/ucl.png" alt="University College London logo"></div>
+          <div class="logo-item"><img src="assets/logos/chulalongkorn.png" alt="Chulalongkorn University logo"></div>
+          <div class="logo-item"><img src="assets/logos/isbi.png" alt="ISBI logo"></div>
+          <div class="logo-item"><img src="assets/logos/ieee.png" alt="IEEE logo"></div>
+        </div>
+      </div>
     </section>
 
     <footer>
-      <div class="container">© ISBI Challenge — &lt;Your Challenge Title&gt;</div>
+      <div class="container small">
+        © 2026 WBCBench. All rights reserved. | <span class="mono">Kaggle link: to be added</span>
+      </div>
     </footer>
   </main>
+
 </body>
 </html>
