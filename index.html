@@ -74,33 +74,33 @@
     .logo-item img{max-width:100%;max-height:44px;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(0,0,0,.3))}
     footer{color:#9cb2da;font-size:14px;padding:20px 0 40px}
     .mono{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
-    .small{font-size:13px}
-  
-/* === Logo section: smooth blue-gray gradient, no dashed border, no shadow === */
-.logos {
-  background: linear-gradient(180deg, #0b1020 0%, #1e293b 50%, #e5e9f0 100%) !important;
-  border-top: 1px solid rgba(255,255,255,.08) !important;
-  padding: 28px 0 46px !important;
-  margin-top: 12px !important;
-}
-.logo-item {
-  height: 64px !important;
-  border-radius: 14px !important;
-  border: none !important;
-  background: #ffffff !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 10px !important;
-}
-.logo-item img {
-  max-width: 100% !important;
-  max-height: 44px !important;
-  object-fit: contain !important;
-  filter: none !important;
-}
+    .small{font-size:14px} /* enlarged for secondary texts */
+    .small.muted{font-size:15px !important;color:#b8c8f0 !important;line-height:1.6}
 
-</style>
+    /* === Logo section: smooth blue-gray gradient, no dashed border, no shadow === */
+    .logos {
+      background: linear-gradient(180deg, #0b1020 0%, #1e293b 50%, #e5e9f0 100%) !important;
+      border-top: 1px solid rgba(255,255,255,.08) !important;
+      padding: 28px 0 46px !important;
+      margin-top: 12px !important;
+    }
+    .logo-item {
+      height: 64px !important;
+      border-radius: 14px !important;
+      border: none !important;
+      background: #ffffff !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 10px !important;
+    }
+    .logo-item img {
+      max-width: 100% !important;
+      max-height: 44px !important;
+      object-fit: contain !important;
+      filter: none !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -122,7 +122,7 @@
         <a href="#organizers">Organizers</a>
         <a href="#contact">Contact</a>
       </div>
-</div>
+    </div>
   </nav>
 
   <!-- Hero -->
@@ -135,6 +135,7 @@
         standardized evaluation for fair, reproducible comparison.
       </p>
       <div class="chips">
+        <span class="chip">🏆🏆🏆🏆</span>
         <span class="chip">Private Kaggle Competition</span>
         <span class="chip">Macro-F1 Primary Metric</span>
         <span class="chip">Patient-level Separation</span>
@@ -229,13 +230,11 @@
           <p>
             <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSein-E0ehxaCR7URd0rlL0zJiUbGzA_KZTssubRUjU0Sw7lnA/viewform?usp=dialog" target="_blank" rel="noopener">Open Registration Form</a>
             <a class="btn secondary" href="#" onclick="alert('Kaggle link will be added upon launch.'); return false;">Kaggle (coming soon)</a>
-            <!-- <span class="kbd mono">Opens in new tab</span> -->
           </p>
           <p class="small muted">Once approved, you will receive an email invitation and be able to join the private competition on Kaggle. The Kaggle link will be added here upon launch.</p>
         </div>
       </div>
     </section>
-
 
     <!-- Dataset -->
     <section id="dataset">
@@ -246,36 +245,22 @@
             The dataset comprises <strong>10,283 peripheral blood smear images</strong> across <strong>13 WBC classes</strong>. Images are provided as <strong>368×368 px JPEG</strong> files and were annotated by expert hematopathologists. The dataset is <strong>highly imbalanced</strong>, reflecting real-world prevalence: common classes (e.g., segmented neutrophils) dominate, while rare leukocytes appear only a few times.
           </p>
           <p>
-            The dataset will be made available via a dedicated <strong>Kaggle link</strong> at launch (training/validation downloadable; test set hidden for fair evaluation). Licensing will follow an appropriate open research license (e.g., <span class="mono">CC BY-NC-SA 4.0</span>) to encourage non‑commercial research and reproducibility.
+            The dataset will be made available via a dedicated <strong>Kaggle link</strong> at launch (training/validation downloadable; test set hidden for fair evaluation). Licensing will follow an appropriate open research license (e.g., <span class="mono">CC BY-NC-SA 4.0</span>) to encourage non-commercial research and reproducibility.
           </p>
           <p class="small muted">Figure 1 shows representative examples of the 13 WBC categories.</p>
 
           <!-- Figure 1: Representative examples -->
           <figure class="card" style="margin-top:12px;">
-      <div style="position:relative;width:100%;max-width:980px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.08);background:#fff">
-        <img src="assets/figs/fig1_examples.png" alt="Figure 1: Example images of the 13 white blood cell classes" style="display:block;width:100%;height:auto;object-fit:contain;">
-      </div>
-      <figcaption class="small" style="margin-top:10px;line-height:1.6;">
-        <strong>Figure 1.</strong> Example images of the 13 white blood cell classes.
-        (A) Segmented Neutrophil, (B) Lymphocyte, (C) Monocyte, (D) Blast cell, (E) Eosinophil,
-        (F) Band form neutrophil, (G) Myelocyte, (H) Metamyelocyte, (I) Variant lymphocyte,
-        (J) Basophil, (K) Promyelocyte, (L) Plasma cell, (M) Prolymphocyte.
-      </figcaption>
-    </figure></div>
+            <div style="position:relative;width:100%;max-width:980px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.08);background:#fff">
+              <img src="assets/figs/fig1_examples.png" alt="Figure 1: Example images of the 13 white blood cell classes" style="display:block;width:100%;height:auto;object-fit:contain;">
             </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-          </div>
-          <!-- <p class="small muted">Place the example images in <span class="mono">assets/figs/</span> using the exact filenames above.</p> -->
+            <figcaption class="small" style="margin-top:10px;line-height:1.6;">
+              <strong>Figure 1.</strong> Example images of the 13 white blood cell classes.
+              (A) Segmented Neutrophil, (B) Lymphocyte, (C) Monocyte, (D) Blast cell, (E) Eosinophil,
+              (F) Band form neutrophil, (G) Myelocyte, (H) Metamyelocyte, (I) Variant lymphocyte,
+              (J) Basophil, (K) Promyelocyte, (L) Plasma cell, (M) Prolymphocyte.
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -286,8 +271,8 @@
         <h2>Evaluation</h2>
         <div class="card">
           <ul>
-            <li><strong>Primary metric:</strong> macro‑averaged F1 across all classes.</li>
-            <li>If tied, use <strong>balanced accuracy</strong>; if still tied, use <strong>macro‑averaged precision</strong>.</li>
+            <li><strong>Primary metric:</strong> macro-averaged F1 across all classes.</li>
+            <li>If tied, use <strong>balanced accuracy</strong>; if still tied, use <strong>macro-averaged precision</strong>.</li>
             <li>If all above tie, final ranking will be determined by <strong>inference time</strong> (verified by organizers).</li>
             <li>Top 5 teams will be asked to submit executable code and trained models for verification.</li>
           </ul>
@@ -315,7 +300,7 @@
       </div>
     </section>
 
-        <!-- Important Dates -->
+    <!-- Important Dates -->
     <section id="important-dates">
       <div class="container">
         <h2>Important Dates</h2>
@@ -330,7 +315,7 @@
               Authors receive reviews and have <em>one week</em> to address comments and make minor updates to the manuscript/method description.
             </li>
             <li style="margin-top:10px;">
-              <strong>January 17 — Camera‑ready Deadline</strong><br>
+              <strong>January 17 — Camera-ready Deadline</strong><br>
               Upload the final paper on EDAS. Ensure your method artifacts (e.g., code/models) are prepared for possible verification. Organizers finalize the ranking.
             </li>
             <li style="margin-top:10px;">
@@ -393,7 +378,6 @@
     <section class="logos" aria-label="Organizers & Sponsors Logos">
       <div class="container">
         <h3>Organizers &amp; Partners</h3>
-        <!-- <p class="small muted">Place your institute and sponsor logos below (PNG/SVG recommended). Replace the placeholders with real image files named as specified.</p> -->
         <div class="logo-grid">
           <div class="logo-item"><img src="assets/logos/bristol.png" alt="University of Bristol logo"></div>
           <div class="logo-item"><img src="assets/logos/oxford.png" alt="University of Oxford logo"></div>
