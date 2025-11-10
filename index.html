@@ -128,7 +128,15 @@
   <!-- Hero -->
   <header class="hero">
     <div class="container">
-      <h1>WBCBench 2026: Robust White Blood Cell Classification</h1>
+      <!-- <h1>WBCBench 2026: Robust White Blood Cell Classification</h1> -->
+      <h1>
+        WBCBench 2026: Robust White Blood Cell Classification 
+        <span style="font-weight:400;">— 
+          <a href="https://biomedicalimaging.org/2026/challenges/" target="_blank" style="color:#5eead4; font-weight:600;">
+            an official ISBI 2026 Challenge
+          </a>
+        </span>
+      </h1>
       <p class="muted">
         A benchmark challenge for automated white blood cell (WBC) classification under severe class imbalance,
         fine-grained morphology, and simulated domain shift. Hosted as a private Kaggle competition with
@@ -273,6 +281,7 @@
           <ul>
             <li><strong>Primary metric:</strong> macro-averaged F1 across all classes.</li>
             <li>If tied, use <strong>balanced accuracy</strong>; if still tied, use <strong>macro-averaged precision</strong>.</li>
+            <li>If still tied, use <strong>macro-averaged specificity</strong>.</li>
             <li>If all above tie, final ranking will be determined by <strong>inference time</strong> (verified by organizers).</li>
             <li>Top 5 teams will be asked to submit executable code and trained models for verification.</li>
           </ul>
@@ -287,7 +296,7 @@
         <h2>Awards &amp; Prizes</h2>
         <div class="card">
           <ul>
-            <li>1st: <strong>$800</strong> &nbsp; 2nd: <strong>$500</strong> &nbsp; 3rd: <strong>$250</strong></li>
+            <li>1st: <strong>🏆🏆🏆</strong> &nbsp; 2nd: <strong>🏆🏆</strong> &nbsp; 3rd: <strong>🏆</strong> &nbsp; (Prize amounts to be announced later)</li>
             <li>Top five teams invited to present at <strong>ISBI 2026</strong>; winners announced at the venue.</li>
           </ul>
           <h3 class="small">Prize Eligibility</h3>
@@ -306,26 +315,47 @@
         <h2>Important Dates</h2>
         <div class="card">
           <ul>
-            <li>
-              <strong>December 12 — Paper Submission Deadline (EDAS, Challenge Track)</strong><br>
-              Submit your challenge paper on the EDAS platform. The review period remains open for <em>two weeks</em>, while method evaluations continue in parallel during this time (i.e. challenge is still running).
-            </li>
-            <li style="margin-top:10px;">
-              <strong>December 26 — Reviews Released on EDAS</strong><br>
-              Authors receive reviews and have <em>one week</em> to address comments and make minor updates to the manuscript/method description.
-            </li>
-            <li style="margin-top:10px;">
-              <strong>January 17 — Camera-ready Deadline</strong><br>
-              Upload the final paper on EDAS. Ensure your method artifacts (e.g., code/models) are prepared for possible verification. Organizers finalize the ranking.
-            </li>
-            <li style="margin-top:10px;">
-              <strong>January 30 — Presentation Format Notification</strong><br>
-              Authors are informed whether their presentation is oral or poster.
-            </li>
-            <li style="margin-top:10px;">
-              <strong>April 8–11 — Winners Announced</strong><br>
-              Final results and award announcements during ISBI 2026.
-            </li>
+              <li>
+                <strong>November 19 — Training Dataset Phase 1 Released</strong><br>
+                Initial training data available for download on Kaggle.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>November 26 — Training Dataset Phase 2 Released with Evaluation Set</strong><br>
+                Second phase training data and evaluation split released. Teams can begin submitting results for leaderboard ranking.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>February 26 — Paper Submission Deadline (EDAS, Challenge Track) & Competition Closes</strong><br>
+                Submit your challenge paper on the ISBI 2026 
+                <a href="https://isbi2026.edas.info/login.php?rurl=aHR0cHM6Ly9pc2JpMjAyNi5lZGFzLmluZm8v" target="_blank" style="color:#60a5fa;">
+                  EDAS platform
+                </a> under the Challenge Track. 
+                On this date, the Kaggle submission portal closes and no new submissions are accepted. We will validate the submitted code/models to confirm the final leaderboard.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>March 1 — Reviews Released on EDAS</strong><br>
+                Authors receive reviews and have <em>two weeks</em> to address comments and make minor updates to the manuscript or method description.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>March 15 — Camera-ready Deadline & Top-performing Teams Announced</strong><br>
+                Upload the final paper on EDAS. Meanwhile, the preliminary top-ranking teams will be announced on our website.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>March 20 — Presentation Format Notification</strong><br>
+                Authors are informed whether their presentation is oral or poster.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>April 8–11 — Winners Announced</strong><br>
+                Final results and award announcements during ISBI 2026.
+              </li>
+
+
+
           </ul>
           <p class="small muted" style="margin-top:12px;">
             Final dates follow the official ISBI 2026 schedule. Please refer to the ISBI Challenge page for any updates:
