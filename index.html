@@ -280,11 +280,16 @@
       <div class="container">
         <h2>Evaluation</h2>
         <div class="card">
+          <h3>Ranking Rules</h3>
           <ul>
             <li><strong>Primary metric:</strong> macro-averaged F1 across all classes.</li>
             <li>If tied, use <strong>balanced accuracy</strong>; if still tied, use <strong>macro-averaged precision</strong>.</li>
             <li>If still tied, use <strong>macro-averaged specificity</strong>.</li>
             <li>If all above tie, final ranking will be determined by <strong>inference time</strong> (verified by organizers).</li>
+          </ul>
+          <h3 style="margin-top:20px;">Competition Rules</h3>
+          <ul>
+            <li>On Kaggle, each team is allowed a maximum of <strong>10 submissions per day</strong> for leaderboard evaluation.</li>
             <li>Top 5 teams will be asked to submit executable code and trained models for verification.</li>
           </ul>
           <p class="small muted">A fixed submission schema and open evaluator are provided to ensure fair, reproducible benchmarking.</p>
