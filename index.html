@@ -113,7 +113,8 @@
       </div>
       <div class="nav-links small">
         <a href="#about">About</a>
-        <a href="#goals">Goals</a>
+        <!-- <a href="#goals">Goals</a> -->
+        <a href="#important-dates">Important Dates</a>
         <a href="#eligibility">Eligibility</a>
         <a href="#registration">Registration</a>
         <a href="#dataset">Dataset</a>
@@ -151,10 +152,10 @@
         <span class="chip">Patient-level Separation</span>
         <span class="chip">Open Evaluator</span>
       </div>
-      <div class="cta">
+<!--       <div class="cta">
         <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSein-E0ehxaCR7URd0rlL0zJiUbGzA_KZTssubRUjU0Sw7lnA/viewform?usp=dialog" target="_blank" rel="noopener">Register on Google Form</a>
-        <a class="btn secondary" href="#" onclick="alert('Kaggle link will be added upon launch.'); return false;">Kaggle (coming soon)</a>
-      </div>
+        <a class="btn" href="https://www.kaggle.com/competitions/wbc-bench-2026" target="_blank" rel="noopener"> Our challenge on Kaggle</a>
+      </div> -->
     </div>
   </header>
 
@@ -211,6 +212,64 @@
       </div>
     </section>
 
+        <!-- Important Dates -->
+    <section id="important-dates">
+      <div class="container">
+        <h2>Important Dates</h2>
+        <div class="card">
+          <ul>
+              <li>
+              <strong>November 19 — Training Dataset Phase 1 (15% of patients) Released</strong><br>
+              phase1_train – 74 patients, 8,288 images. This clean, well-curated subset is available on Kaggle for download and serves as the initial training set and sanity-check benchmark for participants.
+              </li>
+             <li style="margin-top:10px;">
+              <strong>November 26 — Training Dataset Phase 2 (remaining 85% of patients) Released with Evaluation Set</strong><br>
+              phase2_train (45%) – 222 patients, 24,897 images<br>
+              phase2_eval (10%) – 49 patients, 5,350 images<br>
+              phase2_test (30%) – 148 patients, 16,477 images (not released; used internally for leaderboard ranking)<br>
+              Teams can begin submitting results for leaderboard evaluation from this point.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>February 26 — Paper Submission Deadline (4 pages paper in IEEE ISBI format, EDAS, Challenge Track) & Competition Closes</strong><br>
+                Submit your challenge paper on the ISBI 2026 
+                <a href="https://isbi2026.edas.info/login.php?rurl=aHR0cHM6Ly9pc2JpMjAyNi5lZGFzLmluZm8v" target="_blank" style="color:#60a5fa;">
+                  EDAS platform
+                </a> under the Challenge Track. 
+                On this date, the Kaggle submission portal closes and no new submissions are accepted. We will validate the submitted code/models to confirm the final leaderboard.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>March 1 — Reviews Released on EDAS</strong><br>
+                Authors receive reviews and have <em>two weeks</em> to address comments and make minor updates to the manuscript or method description.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>March 15 — Camera-ready Deadline & Top-performing Teams Announced</strong><br>
+                Upload the final paper on EDAS. Meanwhile, the preliminary top-ranking teams will be announced on our website.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>March 20 — Presentation Format Notification</strong><br>
+                Authors are informed whether their presentation is oral or poster.
+              </li>
+
+              <li style="margin-top:10px;">
+                <strong>April 8–11 — Winners Announced</strong><br>
+                Final results and award announcements during ISBI 2026.
+              </li>
+
+
+
+          </ul>
+          <p class="small muted" style="margin-top:12px;">
+            Final dates follow the official ISBI 2026 schedule. Please refer to the ISBI Challenge page for any updates:
+            <a href="https://biomedicalimaging.org/2026/challenges/" target="_blank" rel="noopener">https://biomedicalimaging.org/2026/challenges/</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Eligibility -->
     <section id="eligibility">
       <div class="container">
@@ -235,13 +294,14 @@
           <p>Participation is <strong>by registration and approval</strong>. As a private Kaggle competition, access to the dataset and leaderboard submissions will be granted after you register below and your information is approved by the organizers.</p>
           <ul>
             <li>Please ensure you have a valid <a href="https://www.kaggle.com" target="_blank" rel="noopener">Kaggle account</a>.</li>
-            <li>Provide your <strong>Kaggle username</strong> and <strong>institutional/primary email</strong> in the registration form.</li>
+            <li>Provide your <strong>Kaggle username</strong> and the <strong>email linked to your Kaggle account</strong> as your primary contact email in the registration form.</li>
+            <li>Once your registration is approved, we will email you the competition access link. Please make sure you use the same email to access Kaggle so that the invitation can be applied correctly.</li>
           </ul>
           <p>
             <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSein-E0ehxaCR7URd0rlL0zJiUbGzA_KZTssubRUjU0Sw7lnA/viewform?usp=dialog" target="_blank" rel="noopener">Open Registration Form</a>
-            <a class="btn secondary" href="#" onclick="alert('Kaggle link will be added upon launch.'); return false;">Kaggle (coming soon)</a>
+            <a class="btn" href="https://www.kaggle.com/competitions/wbc-bench-2026" target="_blank" rel="noopener"> Our challenge on Kaggle</a>
           </p>
-          <p class="small muted">Once approved, you will receive an email invitation and be able to join the private competition on Kaggle. The Kaggle link will be added here upon launch.</p>
+          <!-- <p class="small muted">Once approved, you will receive an email invitation and be able to join the private competition on Kaggle. The Kaggle link will be added here upon launch.</p> -->
         </div>
       </div>
     </section>
@@ -316,62 +376,6 @@
       </div>
     </section>
 
-    <!-- Important Dates -->
-    <section id="important-dates">
-      <div class="container">
-        <h2>Important Dates</h2>
-        <div class="card">
-          <ul>
-              <li>
-                <strong>November 19 — Training Dataset Phase 1 Released</strong><br>
-                Initial training data available for download on Kaggle.
-              </li>
-
-              <li style="margin-top:10px;">
-                <strong>November 26 — Training Dataset Phase 2 Released with Evaluation Set</strong><br>
-                Second phase training data and evaluation split released. Teams can begin submitting results for leaderboard ranking.
-              </li>
-
-              <li style="margin-top:10px;">
-                <strong>February 26 — Paper Submission Deadline (EDAS, Challenge Track) & Competition Closes</strong><br>
-                Submit your challenge paper on the ISBI 2026 
-                <a href="https://isbi2026.edas.info/login.php?rurl=aHR0cHM6Ly9pc2JpMjAyNi5lZGFzLmluZm8v" target="_blank" style="color:#60a5fa;">
-                  EDAS platform
-                </a> under the Challenge Track. 
-                On this date, the Kaggle submission portal closes and no new submissions are accepted. We will validate the submitted code/models to confirm the final leaderboard.
-              </li>
-
-              <li style="margin-top:10px;">
-                <strong>March 1 — Reviews Released on EDAS</strong><br>
-                Authors receive reviews and have <em>two weeks</em> to address comments and make minor updates to the manuscript or method description.
-              </li>
-
-              <li style="margin-top:10px;">
-                <strong>March 15 — Camera-ready Deadline & Top-performing Teams Announced</strong><br>
-                Upload the final paper on EDAS. Meanwhile, the preliminary top-ranking teams will be announced on our website.
-              </li>
-
-              <li style="margin-top:10px;">
-                <strong>March 20 — Presentation Format Notification</strong><br>
-                Authors are informed whether their presentation is oral or poster.
-              </li>
-
-              <li style="margin-top:10px;">
-                <strong>April 8–11 — Winners Announced</strong><br>
-                Final results and award announcements during ISBI 2026.
-              </li>
-
-
-
-          </ul>
-          <p class="small muted" style="margin-top:12px;">
-            Final dates follow the official ISBI 2026 schedule. Please refer to the ISBI Challenge page for any updates:
-            <a href="https://biomedicalimaging.org/2026/challenges/" target="_blank" rel="noopener">https://biomedicalimaging.org/2026/challenges/</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- Organizers -->
     <section id="organizers">
       <div class="container">
@@ -402,12 +406,10 @@
         <h2>Contact</h2>
         <div class="card">
           <ul>
-            <li>Nantheera Anantrasirichai — <a href="mailto:N.Anantrasirichai@bristol.ac.uk">N.Anantrasirichai@bristol.ac.uk</a> — University of Bristol</li>
-            <li>Alin Achim — <a href="mailto:Alin.Achim@bristol.ac.uk">Alin.Achim@bristol.ac.uk</a> — University of Bristol</li>
-            <li>Bartek Papiez — <a href="mailto:bartlomiej.papiez@bdi.ox.ac.uk">bartlomiej.papiez@bdi.ox.ac.uk</a> — University of Oxford</li>
-            <li>Xudong Ma — <a href="mailto:xudong.ma@ndph.ox.ac.uk">xudong.ma@ndph.ox.ac.uk</a> — University of Oxford</li>
             <li>Xin Tian — <a href="mailto:xin.tian@well.ox.ac.uk">xin.tian@well.ox.ac.uk</a> — University of Oxford</li>
+            <li>Xudong Ma — <a href="mailto:xudong.ma@ndph.ox.ac.uk">xudong.ma@ndph.ox.ac.uk</a> — University of Oxford</li>
             <li>Tianqi Yang — <a href="mailto:tianqi.yang@ucl.ac.uk">tianqi.yang@ucl.ac.uk</a> — University College London</li>
+            <li>Nantheera Anantrasirichai — <a href="mailto:N.Anantrasirichai@bristol.ac.uk">N.Anantrasirichai@bristol.ac.uk</a> — University of Bristol</li>
           </ul>
         </div>
       </div>
@@ -430,7 +432,7 @@
 
     <footer>
       <div class="container small">
-        © 2026 WBCBench. All rights reserved. | <span class="mono">Kaggle link: to be added</span>
+        © 2026 WBCBench. All rights reserved.
       </div>
     </footer>
   </main>
